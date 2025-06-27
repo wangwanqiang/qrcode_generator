@@ -21,3 +21,5 @@ Usage of C:\mygo\qrcode_generator\bin\qrcode_generator_windows_amd64.exe:
         要转换为二维码的文本
 
 ```
+
+
