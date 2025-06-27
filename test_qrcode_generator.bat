@@ -15,7 +15,7 @@ mkdir %TEST_DIR%
 
 :: 测试1: 基本功能测试
 echo 测试1: 基本功能测试...
-go run .\qrcode_generator.go -text %TEST_URL% -output %TEST_DIR%\basic.png
+go run .\main.go -text %TEST_URL% -output %TEST_DIR%\basic.png
 if errorlevel 1 (
     echo 测试1失败!
     goto :test_failed
@@ -26,7 +26,7 @@ if errorlevel 1 (
 :: 测试2: 带Logo的二维码
 echo 测试2: 带Logo的二维码...
 if exist %LOGO_FILE% (
-    go run .\qrcode_generator.go -text %TEST_TEXT% -logo %LOGO_FILE% -logo-size 100 -output %TEST_DIR%\with_logo.png
+    go run .\main.go -text %TEST_TEXT% -logo %LOGO_FILE% -logo-size 100 -output %TEST_DIR%\with_logo.png
     if errorlevel 1 (
         echo 测试2失败!
         goto :test_failed
@@ -39,7 +39,7 @@ if exist %LOGO_FILE% (
 
 :: 测试3: 自定义边距
 echo 测试3: 自定义边距...
-go run .\qrcode_generator.go -text %TEST_URL% -border 10 -output %TEST_DIR%\with_border.png
+go run .\main.go -text %TEST_URL% -border 10 -output %TEST_DIR%\with_border.png
 if errorlevel 1 (
     echo 测试3失败!
     goto :test_failed
@@ -49,7 +49,7 @@ if errorlevel 1 (
 
 :: 测试4: 自定义尺寸
 echo 测试4: 自定义尺寸...
-go run .\qrcode_generator.go -text %TEST_URL% -size 512 -output %TEST_DIR%\large_size.png
+go run .\main.go -text %TEST_URL% -size 512 -output %TEST_DIR%\large_size.png
 if errorlevel 1 (
     echo 测试4失败!
     goto :test_failed
@@ -60,7 +60,7 @@ if errorlevel 1 (
 :: 测试5: 带Logo和自定义边距
 echo 测试5: 带Logo和自定义边距...
 if exist %LOGO_FILE% (
-    go run .\qrcode_generator.go -text %TEST_URL% -logo %LOGO_FILE% -border 1 -output %TEST_DIR%\logo_border.png
+    go run .\main.go -text %TEST_URL% -logo %LOGO_FILE% -border 1 -output %TEST_DIR%\logo_border.png
     if errorlevel 1 (
         echo 测试5失败!
         goto :test_failed
@@ -73,7 +73,7 @@ if exist %LOGO_FILE% (
 
 :: 测试6: 错误处理 - 缺少文本参数
 echo 测试6: 错误处理 - 缺少文本参数...
-go run .\qrcode_generator.go -output %TEST_DIR%\error.png > %TEST_DIR%\error.log 2>&1
+go run .\main.go -output %TEST_DIR%\error.png > %TEST_DIR%\error.log 2>&1
 if errorlevel 0 (
     echo 测试6失败! 程序应该拒绝缺少必需参数的情况
     goto :test_failed
